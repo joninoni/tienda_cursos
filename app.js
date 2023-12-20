@@ -1,4 +1,6 @@
 const lista =document.querySelector("#lista");
+const tbody= document.querySelector("#tbody");
+console.log(tbody);
 let arreglo=[];
 
 //eventos

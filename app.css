@@ -157,3 +157,16 @@ h3{
     background-color: var(--secundario);
     color: #000;
 }
+/*pagina carrito*/
+.heading{
+    text-align: center;
+}
+.tabla{
+    border-collapse: collapse;
+}
+.tabla__tr{
+    background-color: #5DADE2;
+}
+.tabla__th{
+    padding: 1rem 5rem;
+}
