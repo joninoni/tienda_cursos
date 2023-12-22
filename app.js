@@ -8,6 +8,10 @@ listaEventos();
 function listaEventos(){
     lista.addEventListener("click",agregarCurso);
     tabla.addEventListener("click",eliminarCurso);
+    document.addEventListener("DOMContentLoaded",()=>{
+        arreglo = JSON.parse(localStorage.getItem("prueba")) || [];
+        crearHtml();
+    })
 }
 
 //funciones
@@ -68,8 +72,11 @@ function crearHtml(){
                       `
         tbody.appendChild(tr);
     })
+    sincronizarHtml();
 }
-
+function sincronizarHtml(){
+    localStorage.setItem("prueba",JSON.stringify(arreglo));
+}
 function limpiarHtml(){
     while(tbody.firstChild){
         tbody.removeChild(tbody.firstChild);
