@@ -1,6 +1,5 @@
 const lista =document.querySelector("#lista");
 const tbody= document.querySelector("#tbody");
-console.log(tbody);
 let arreglo=[];
 
 //eventos
@@ -21,6 +20,29 @@ function leerCurso(curso){
         img:curso.querySelector("img").src,
         id:curso.querySelector("a").getAttribute("data-id"),
         precio:curso.querySelector(".curso__precio").textContent,
+        cantidad:1,
     }
     arreglo=[...arreglo,objCurso];
+    crearHtml();
+}
+
+function crearHtml(){
+
+    limpiarHtml();
+
+    arreglo.forEach( curso => {
+        const tr =document.createElement("tr");
+        tr.innerHTML=`<td><img src="${curso.img}"></td>
+                      <td> ${curso.titulo}</td>
+                      <td> ${curso.precio}</td>
+                      <td> ${curso.cantidad}</td>
+                      `
+        tbody.appendChild(tr);
+    })
+}
+
+function limpiarHtml(){
+    while(tbody.firstChild){
+        tbody.removeChild(tbody.firstChild);
+    }
 }
