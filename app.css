@@ -60,6 +60,10 @@ h3{
         justify-content: space-between;
     }
 }
+.header__carrito{
+    display: flex;
+    align-items: center;
+}
 .navegacion{
     display: flex;
     flex-direction: column;
@@ -84,6 +88,17 @@ h3{
 }
 .navegacion__link:last-of-type{
     margin-bottom: 0;
+}
+.navegacion__total{
+    display: inline-block;
+    background-color: #99A34A;
+    font-size: 1.8rem;
+    width: 5rem;
+    height: 5rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 .lista{
     margin-top: 5rem;

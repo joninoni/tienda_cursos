@@ -1,8 +1,8 @@
 const lista =document.querySelector("#lista");
 const tbody= document.querySelector("#tbody");
 const tabla =document.querySelector(".tabla");
+const suma= document.querySelector(".navegacion__total");
 let arreglo=[];
-
 //eventos
 listaEventos();
 function listaEventos(){
@@ -20,7 +20,8 @@ function eliminarCurso(e){
     if(e.target.classList.contains("borrar-curso")){
        const id=e.target.getAttribute("data-id");
        arreglo=arreglo.filter( curso => curso.id !==id)
-       crearHtml()
+       crearHtml();
+       totalCursos();
     }
 }
 function agregarCurso(e){
@@ -54,10 +55,14 @@ function leerCurso(curso){
     else{
         arreglo=[...arreglo,objCurso];
     }
-    console.log(arreglo);
     crearHtml();
+    totalCursos();
 }
-
+function totalCursos(){
+    limpiarSuma();
+    const sumaTotal= arreglo.reduce( (acc,curso) => acc + curso.cantidad ,0);
+    suma.textContent=sumaTotal;
+}
 function crearHtml(){
 
     limpiarHtml();
@@ -80,5 +85,10 @@ function sincronizarHtml(){
 function limpiarHtml(){
     while(tbody.firstChild){
         tbody.removeChild(tbody.firstChild);
+    }
+}
+function limpiarSuma(){
+    while(suma.firstChild){
+        suma.removeChild(suma.firstChild);
     }
 }
