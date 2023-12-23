@@ -3,6 +3,7 @@ const tbody= document.querySelector("#tbody");
 const tabla =document.querySelector(".tabla");
 const suma= document.querySelector(".navegacion__total");
 let arreglo=[];
+let total=[];
 //eventos
 listaEventos();
 function listaEventos(){
@@ -10,7 +11,9 @@ function listaEventos(){
     tabla.addEventListener("click",eliminarCurso);
     document.addEventListener("DOMContentLoaded",()=>{
         arreglo = JSON.parse(localStorage.getItem("prueba")) || [];
+        total = JSON.parse(localStorage.getItem("total")) || [];
         crearHtml();
+        totalCursos();
     })
 }
 
@@ -61,8 +64,10 @@ function leerCurso(curso){
 function totalCursos(){
     limpiarSuma();
     const sumaTotal= arreglo.reduce( (acc,curso) => acc + curso.cantidad ,0);
-    suma.textContent=sumaTotal;
+    suma.textContent=sumaTotal; 
+    sincronizarCursos(sumaTotal);
 }
+
 function crearHtml(){
 
     limpiarHtml();
@@ -81,6 +86,10 @@ function crearHtml(){
 }
 function sincronizarHtml(){
     localStorage.setItem("prueba",JSON.stringify(arreglo));
+}
+function sincronizarCursos(suma){
+     total.push(suma);
+     localStorage.setItem("total",JSON.stringify(total));
 }
 function limpiarHtml(){
     while(tbody.firstChild){
